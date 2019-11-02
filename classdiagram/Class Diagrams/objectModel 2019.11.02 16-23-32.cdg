@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="objectModel">
+  <ClassDiagramComponents>
+    <Class name="Automobile" package="objectModel" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="vIN" type="String" visibility="private"/>
+        <Field name="engineType" type="String" visibility="private"/>
+        <Field name="numberOfWheels" type="int" visibility="private"/>
+        <Field name="transmisionType" type="String" visibility="private"/>
+        <Field name="numOfGears" type="int" visibility="private"/>
+        <Field name="numberOfSeats" type="int" visibility="private"/>
+        <Field name="cargoCapasity" type="double" visibility="private"/>
+        <Field name="driveTrain" type="String" visibility="private"/>
+        <Field name="numberOfDoors" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getvIN" returnType="String" visibility="public"/>
+        <Method name="setvIN" returnType="void" visibility="public">
+          <Argument type="String" name="vIN"/>
+        </Method>
+        <Method name="getEngineType" returnType="String" visibility="public"/>
+        <Method name="setEngineType" returnType="void" visibility="public">
+          <Argument type="String" name="engineType"/>
+        </Method>
+        <Method name="getNumberOfWheels" returnType="int" visibility="public"/>
+        <Method name="setNumberOfWheels" returnType="void" visibility="public">
+          <Argument type="int" name="numberOfWheels"/>
+        </Method>
+        <Method name="getTransmisionType" returnType="String" visibility="public"/>
+        <Method name="setTransmisionType" returnType="void" visibility="public">
+          <Argument type="String" name="transmisionType"/>
+        </Method>
+        <Method name="getNumOfGears" returnType="int" visibility="public"/>
+        <Method name="setNumOfGears" returnType="void" visibility="public">
+          <Argument type="int" name="numOfGears"/>
+        </Method>
+        <Method name="getNumberOfSeats" returnType="int" visibility="public"/>
+        <Method name="setNumberOfSeats" returnType="void" visibility="public">
+          <Argument type="int" name="numberOfSeats"/>
+        </Method>
+        <Method name="getCargoCapasity" returnType="double" visibility="public"/>
+        <Method name="setCargoCapasity" returnType="void" visibility="public">
+          <Argument type="double" name="cargoCapasity"/>
+        </Method>
+        <Method name="getDriveTrain" returnType="String" visibility="public"/>
+        <Method name="setDriveTrain" returnType="void" visibility="public">
+          <Argument type="String" name="driveTrain"/>
+        </Method>
+        <Method name="getNumberOfDoors" returnType="int" visibility="public"/>
+        <Method name="setNumberOfDoors" returnType="void" visibility="public">
+          <Argument type="int" name="numberOfDoors"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Interface name="CrashTestExtended" package="objectModel" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Methods>
+        <Method name="hasEmergencyBrakes" returnType="boolean" visibility="public"/>
+        <Method name="hasBlindSpotDetection" returnType="boolean" visibility="public"/>
+        <Method name="hasAirBags" returnType="boolean" visibility="public"/>
+        <Method name="vehicleScore" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Class name="Vehicle" package="objectModel" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="score" type="double" visibility="private" isStatic="true"/>
+        <Field name="scan" type="Scanner" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getScore" returnType="double" visibility="public" isStatic="true"/>
+        <Method name="negativeScoreFixer" returnType="void" visibility="public"/>
+        <Method name="vehicleScore" returnType="void" visibility="public"/>
+        <Method name="getVehicleYear" returnType="int" visibility="public"/>
+        <Method name="getVehicleWeight" returnType="double" visibility="public"/>
+        <Method name="hasEmergencyBrakes" returnType="boolean" visibility="public"/>
+        <Method name="hasBlindSpotDetection" returnType="boolean" visibility="public"/>
+        <Method name="hasAirBags" returnType="boolean" visibility="public"/>
+        <Method name="getDrivingMode" returnType="DrivingMode" visibility="public"/>
+        <Method name="driverAirbagPresent" returnType="boolean" visibility="public"/>
+        <Method name="getFrontBumberHeight" returnType="double" visibility="public"/>
+        <Method name="frameMaterialIdentifer" returnType="String" visibility="public"/>
+        <Method name="getLengthOfWheelBase" returnType="double" visibility="public"/>
+        <Method name="getFrontWeightLevelWeight" returnType="double" visibility="public"/>
+        <Method name="getFrontWeightWhenRaised" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="vehicleLand" package="objectModel" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="objectModel.Vehicle" target="objectModel.CrashTestExtended"/>
+    <IsRelation name="is" source="objectModel.vehicleLand" target="objectModel.Vehicle"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

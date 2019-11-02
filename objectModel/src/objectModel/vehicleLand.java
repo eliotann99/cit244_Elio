@@ -16,7 +16,8 @@ public class vehicleLand extends Vehicle {
         
         car.vehicleScore();
         double finalscore = Vehicle.getScore();
-        
+        if (finalscore >= 0) {
         System.out.println("vehicle's score is " + finalscore);
+        }// close if
     }// clsoe main method
 }// close class
