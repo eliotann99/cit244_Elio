@@ -54,7 +54,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Vehicle" package="objectModel" visibility="public" xPosition="382.0" yPosition="20.0">
+    <Class name="Vehicle" package="objectModel" visibility="public" xPosition="389.0" yPosition="162.0">
       <Fields>
         <Field name="score" type="double" visibility="private" isStatic="true"/>
         <Field name="scan" type="Scanner" visibility="package"/>
@@ -78,7 +78,7 @@
         <Method name="getFrontWeightWhenRaised" returnType="double" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="vehicleLand" package="objectModel" visibility="public" xPosition="697.0" yPosition="20.0">
+    <Class name="vehicleLand" package="objectModel" visibility="public" xPosition="389.0" yPosition="20.0">
       <Fields/>
       <Constructors/>
       <Methods>
@@ -87,7 +87,7 @@
         </Method>
       </Methods>
     </Class>
-    <Interface name="CrashTestExtended" package="objectModel" visibility="public" xPosition="393.0" yPosition="468.0">
+    <Interface name="CrashTestExtended" package="objectModel" visibility="public" xPosition="718.0" yPosition="162.0">
       <Methods>
         <Method name="hasEmergencyBrakes" returnType="boolean" visibility="public"/>
         <Method name="hasBlindSpotDetection" returnType="boolean" visibility="public"/>
@@ -97,7 +97,7 @@
     </Interface>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
+    <IsRelation name="is" source="objectModel.Automobile" target="objectModel.Vehicle"/>
     <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="objectModel.Vehicle" target="objectModel.CrashTestExtended"/>
-    <IsRelation name="is" source="objectModel.vehicleLand" target="objectModel.Vehicle"/>
   </ClassDiagramRelations>
 </ClassDiagram>

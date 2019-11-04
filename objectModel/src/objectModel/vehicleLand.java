@@ -9,7 +9,7 @@ package objectModel;
  *
  * @author eliot
  */
-public class vehicleLand extends Vehicle {
+public class vehicleLand {
 
     public static void main(String[] args) {
         Vehicle car = new Vehicle();

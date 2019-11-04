@@ -9,7 +9,7 @@ package objectModel;
  *
  * @author eliot
  */
-public class Automobile {
+public class Automobile extends Vehicle {
     
     private String vIN;
     private String engineType;
