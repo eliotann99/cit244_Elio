@@ -54,15 +54,7 @@
         </Method>
       </Methods>
     </Class>
-    <Interface name="CrashTestExtended" package="objectModel" visibility="public" xPosition="320.0" yPosition="20.0">
-      <Methods>
-        <Method name="hasEmergencyBrakes" returnType="boolean" visibility="public"/>
-        <Method name="hasBlindSpotDetection" returnType="boolean" visibility="public"/>
-        <Method name="hasAirBags" returnType="boolean" visibility="public"/>
-        <Method name="vehicleScore" returnType="void" visibility="public"/>
-      </Methods>
-    </Interface>
-    <Class name="Vehicle" package="objectModel" visibility="public" xPosition="620.0" yPosition="20.0">
+    <Class name="Vehicle" package="objectModel" visibility="public" xPosition="382.0" yPosition="20.0">
       <Fields>
         <Field name="score" type="double" visibility="private" isStatic="true"/>
         <Field name="scan" type="Scanner" visibility="package"/>
@@ -86,7 +78,7 @@
         <Method name="getFrontWeightWhenRaised" returnType="double" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="vehicleLand" package="objectModel" visibility="public" xPosition="920.0" yPosition="20.0">
+    <Class name="vehicleLand" package="objectModel" visibility="public" xPosition="697.0" yPosition="20.0">
       <Fields/>
       <Constructors/>
       <Methods>
@@ -95,6 +87,14 @@
         </Method>
       </Methods>
     </Class>
+    <Interface name="CrashTestExtended" package="objectModel" visibility="public" xPosition="393.0" yPosition="468.0">
+      <Methods>
+        <Method name="hasEmergencyBrakes" returnType="boolean" visibility="public"/>
+        <Method name="hasBlindSpotDetection" returnType="boolean" visibility="public"/>
+        <Method name="hasAirBags" returnType="boolean" visibility="public"/>
+        <Method name="vehicleScore" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
     <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="objectModel.Vehicle" target="objectModel.CrashTestExtended"/>
