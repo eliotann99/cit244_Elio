@@ -11,17 +11,15 @@ package decription;
  */
     
 import java.io.*;
-import java.math.BigInteger;
 import java.security.*;
 import java.security.spec.*;
-import java.security.interfaces.*;
 import javax.crypto.*;
 import javax.crypto.spec.*;
 import javax.crypto.interfaces.*;
-import com.sun.crypto.provider.SunJCE;
 
 public class DHKeyAgreement2 {
-    public static void main(String argv[]) throws Exception {
+    
+    
         KeyPair alphaPair= null;
         KeyAgreement alphaKeyAgreement = null;
         KeyAgreement bravoKeyAgreement= null;
@@ -34,10 +32,9 @@ public class DHKeyAgreement2 {
         KeyPairGenerator bravoKeyPairGen= null;
         KeyFactory alphaKeyFactory = null;
         PublicKey bravoPub= null;
-        
-        try {
-            //alpha creates key pair with 2048-bit size
-            System.out.println("Alpha: Generate DH keys ...");
+    
+    public void alphaKeyGenerator() throws InvalidKeyException, NoSuchAlgorithmException {
+        System.out.println("Alpha: Generate DH keys ...");
             KeyPairGenerator alphaKeyPairGen= KeyPairGenerator.getInstance("DH");
             alphaKeyPairGen.initialize(2048);
             alphaPair = alphaKeyPairGen.generateKeyPair();
@@ -47,16 +44,10 @@ public class DHKeyAgreement2 {
             alphaKeyAgreement.init(alphaPair.getPrivate());
             
             alphaPublicKeyEncoded = alphaPair.getPublic().getEncoded();
-            //now bravo uses this key info to create a message
-            bravoKeyFactory = KeyFactory.getInstance("DH");
-            x509KS = new X509EncodedKeySpec(alphaPublicKeyEncoded);
-            alphaPub = bravoKeyFactory.generatePublic(x509KS);
-            
-            //embodies the exchange of the keys across some network
-            //assuming both computers are speaking Java
-            DHParameterSpec dhParamFromAlphaKey = ((DHPublicKey)alphaPub).getParams();
-            
-            System.out.println("Bravo: Generate Dh keys");
+    } // close alpha method
+    
+    public void BravoKeyGenerator(DHParameterSpec dhParamFromAlphaKey) throws NoSuchAlgorithmException, InvalidKeyException, InvalidAlgorithmParameterException {
+        System.out.println("Bravo: Generate Dh keys");
             bravoKeyPairGen= KeyPairGenerator.getInstance("DH");
             bravoKeyPairGen.initialize(dhParamFromAlphaKey);
             KeyPair bravoPair = bravoKeyPairGen.generateKeyPair();
@@ -67,6 +58,23 @@ public class DHKeyAgreement2 {
             
             bravoPublicKeyEncoded = bravoPair.getPublic().getEncoded();
             
+    }// close bravo method
+    
+    public void guide() throws Exception {
+        
+        try {
+            //alpha creates key pair with 2048-bit size
+            alphaKeyGenerator();
+            //now bravo uses this key info to create a message
+            bravoKeyFactory = KeyFactory.getInstance("DH");
+            x509KS = new X509EncodedKeySpec(alphaPublicKeyEncoded);
+            alphaPub = bravoKeyFactory.generatePublic(x509KS);
+            
+            //embodies the exchange of the keys across some network
+            //assuming both computers are speaking Java
+            DHParameterSpec dhParamFromAlphaKey = ((DHPublicKey)alphaPub).getParams();
+            
+            BravoKeyGenerator(dhParamFromAlphaKey);
             //now Alpha uses Bravo's public key
             alphaKeyFactory = KeyFactory.getInstance("DH");
             x509KS = new X509EncodedKeySpec(bravoPublicKeyEncoded);
@@ -127,13 +135,13 @@ public class DHKeyAgreement2 {
 
             System.out.println("Secret (symmetric) Key: " + toHexString(deloAESKey.getEncoded()));
 
-            Cipher alphaCipher = null;
-            Cipher bravoCipher = null;
-            byte[] clearText = null;
-            byte[] cipherText = null;
-            byte[] encodedParams = null;
-            byte[] recoveredText = null;
-            AlgorithmParameters aesParams = null;
+            Cipher alphaCipher;
+            Cipher bravoCipher;
+            byte[] clearText;
+            byte[] cipherText;
+            byte[] encodedParams;
+            byte[] recoveredText;
+            AlgorithmParameters aesParams;
 
             try {
                 // USE AES in CBC mode
@@ -143,10 +151,7 @@ public class DHKeyAgreement2 {
                 cipherText = bravoCipher.doFinal(clearText);
                 encodedParams = bravoCipher.getParameters().getEncoded();
 
-                //************************************
-                //*****Exchange of the encodedParamsObject over
-                //***** Insecure network happens here
-                //************************************
+             
 
                 // alpha decrypts
                 aesParams = AlgorithmParameters.getInstance("AES");
@@ -162,9 +167,7 @@ public class DHKeyAgreement2 {
 
                }
 
-            } catch (NoSuchAlgorithmException | NoSuchPaddingException ex) {
-                System.out.println(ex);
-            } catch (InvalidKeyException ex) {
+            } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException ex) {
                 System.out.println(ex);
             } catch (IllegalBlockSizeException ex) {
                 System.out.println("Illegal blocksize ex");

@@ -6,11 +6,8 @@
 package decription;
 
 import javax.swing.JFrame;
-import javax.swing.border.*;
-import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -63,13 +60,9 @@ public class DecriptionGui extends JFrame{
     class ButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-           if(textReader !=null){
-               controller.setText(textReader.getText());
-               controller.modelCaller();
-               textDisplay.setText(controller.getHash());
-           } else {
-               textDisplay.removeAll();
-           }//close if else
+            controller.setText(textReader.getText());
+            controller.modelCaller();
+            textDisplay.setText(controller.getHash());
         }//close method
     }// close class
 

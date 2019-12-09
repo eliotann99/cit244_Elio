@@ -15,7 +15,9 @@ public class DescriptionController {
     private String text;
     private String hash;
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        DHKeyAgreement2 d = new DHKeyAgreement2();
+        d.guide();
         setup();
     }// close main method
     

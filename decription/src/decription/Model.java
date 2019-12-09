@@ -23,9 +23,11 @@ public class Model {
             MessageDigest digester = MessageDigest.getInstance("MD5");
             
             digester.update(controller.getText().getBytes());
-            
-            hashedValue =DatatypeConverter.printHexBinary(digester.digest());
-            
+            if(controller.getText().isEmpty()){
+
+            }else {
+                hashedValue =DatatypeConverter.printHexBinary(digester.digest());
+            }
         } catch (NoSuchAlgorithmException ex) {
             System.out.println(ex);
         }// close try catch
